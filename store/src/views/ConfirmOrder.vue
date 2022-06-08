@@ -2,7 +2,7 @@
 	<div class="confirmOrder">
 		<!-- 头部 -->
 		<div class="confirmOrder-header">
-			<div class="header-content">
+			<div class="header-content">			
 				<p></p>
 				<p>
 					<i class="el-icon-s-order"></i>

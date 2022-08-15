@@ -91,7 +91,7 @@ router.beforeResolve((to, from, next) => {
 });
 
 // 相对时间过滤器,把时间戳转换成时间
-// 格式: 2020-02-25 21:43:23
+// 格式: 2022-05-25 21:43:23
 //创建 Vue 实例之前全局定义过滤器
 Vue.filter('dateFormat', (dataStr) => {
 	/* 根据dateFormat 进行过滤  接收一个参数  */

@@ -15,7 +15,6 @@
 		<!-- 我的订单主要内容 -->
 		<div class="order-content" v-if="orders.length>0">
 			<div class="content" v-for="(item,index) in orders" :key="index">
-				<!-- 遍历用索引，还是因为找订单就这些东西 在订单里找对应的索引就行-->
 				<ul>
 					<!-- 我的订单表头 -->
 					<li class="order-info">

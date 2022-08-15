@@ -14,7 +14,7 @@
 						<!-- 有就显示用户名称 -->
 						<li v-else>
 							欢迎
-							<!-- 点击用户名，弹出框 两个按钮，  visible  根据数据显示，点击取消后，该弹出框隐藏  点击确认后，调用退出函数，清除本地的token，将该弹出框隐藏-->
+							<!-- 点击用户名弹出对话框，点击确认后，调用退出函数，清除本地的token，将该弹出框隐藏-->
 							<el-popover placement="top" width="180" v-model="visible">
 								<p>确定退出登录吗？</p>
 								<div style="text-align: right; margin: 10px 0 0">
@@ -22,7 +22,7 @@
 									<el-button type="primary" size="mini" @click="logout">确定</el-button>
 								</div>
 								<!-- 显示用户名 -->
-								<!-- slot="reference"  点击用户名，触发上面的这个popover的对话框 -->
+								<!-- slot="reference" 弹出popever -->
 								<el-button type="text" slot="reference">{{this.$store.getters.getUser.userName}}
 								</el-button>
 							</el-popover>
@@ -33,7 +33,7 @@
 						<li>
 							<router-link to="/collect">我的收藏</router-link>
 						</li>
-						<!-- 三元表达式， 背景样式问题， 根据购物车的数量是否大于零来判断 -->
+						<!-- 背景样式问题， 根据购物车的数量是否大于零来判断 -->
 						<li :class="getNum > 0 ? 'shopCart-full' : 'shopCart'">
 							<router-link to="/shoppingCart"><strong></strong>
 								<i class="el-icon-shopping-cart-full"></i> 购物车
@@ -97,7 +97,7 @@
 					<div class="ng-promise-box">
 						<div class="ng-promise">
 							<p class="text">
-								<!-- a标签必须要给href属性，写javascript:; 什么都不执行，写空的，点击后会刷新页面，写#会跳转到当前页面顶部   -->
+								<!-- 写javascript:;  默认不执行   -->
 								<!-- <a class="icon1" href="#">7天无理由退换货</a>
 								<a class="icon2" href="">满99元全场免邮</a> -->
 								<a class="icon1" href="javascript:;">7天无理由退换货</a>
@@ -107,7 +107,7 @@
 						</div>
 					</div>
 					<div class="github">
-						<a href="https://github.com/hai-27/vue-store" target="_blank">
+						<a href="javascript:;" target="_blank">
 							<div class="github-but"></div>
 						</a>
 					</div>
@@ -119,7 +119,7 @@
 							<span>|</span>
 							<router-link to="/about">关于我们</router-link>
 						</p>
-						<p class="coty">商城版权所有 &copy; 2012-2021</p>
+						<p class="coty">商城版权所有 &copy; 2012-2022</p>
 					</div>
 				</div>
 			</el-footer>

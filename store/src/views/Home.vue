@@ -5,7 +5,7 @@
 			<!-- 轮播图的ui -->
 			<el-carousel height="460px">
 				<el-carousel-item v-for="item in carousel" :key="item.carousel_id">
-					<!-- 通过main配置，直接找服务器要图片的地址，根据v-for 的id 来显示  -->
+					<!-- 通过proxy配置，直接找服务器要图片的地址，根据v-for 的id 来显示  -->
 					<img style="height:460px;" :src="$target + item.imgPath" :alt="item.describes" />
 				</el-carousel-item>
 			</el-carousel>

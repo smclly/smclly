@@ -28,8 +28,7 @@
 				<!-- 不止一张图片，就用轮播图  仅一张就用div盒子 -->
 				<el-carousel height="560px" v-if="productPicture.length>1">
 					<el-carousel-item v-for="item in productPicture" :key="item.id">
-						<!-- 为什么要用服务器端的这个地址，是怕获取不到数据吗  
-							这里获取到的应该不是图片，而是一个文件路径，加上后台的项目地址就ok了，这样还可以避免加载缓慢的问题吗？ 优化？		 -->
+						<!-- 动态获取src，根据跨域的设置，动态绑定图片的路径 -->
 						<img style="height:560px;" :src="$target + item.product_picture" :alt="item.intro" />
 						<!-- $target + -->
 					</el-carousel-item>
@@ -106,8 +105,8 @@
 			console.log('111')  //就执行一次，activated每次进入页面都会执行，只要是由缓存
 		}, */
 		// 通过路由获取商品id
-		//进来后，更新默认的商品id  然后通过监视属性做事  不是一次性的啊？？？  	 
-		/* 一般的思路是初始化的时候，在挂载后更新id并向后台发数据，用activated的话，每次进来都会更新商品id，然后发请求，做事情 */
+		//进来后，更新默认的商品id  然后通过监视属性做事  	 
+		/* activated的话，每次进来都会更新商品id，然后发请求，做事情 */
 		activated() {
 			if (this.$route.query.productID != undefined) {
 				this.productID = this.$route.query.productID;
@@ -117,7 +116,6 @@
 		watch: {
 			/* 默认的商品id变化，调用vuex的方法，获取后台数据
 				后台设置了两个响应的按钮，一个获取商品的信息，一个获取图片
-				初始化的
 			 */
 			productID: function(val) {
 				this.getDetails(val);
@@ -178,8 +176,7 @@
 								console.log(res.data.shoppingCartData[0])
 								//console.log(res.data.shoppingCartData[0].id) 
 								//console.log(res.data.shoppingCartData[0].maxNum)
-								//把整个数据都给传递过去啦  按说一般都是只传递商品的id吧。。  作者只是为了限制单个商品的最大购买数量 传递两个参数作为对象给过去就行啦	
-								//这里我也明白了，为什么要把商品的基础信息和那个图片的api分开  路径不一样，获取回来的数据也不一样，后台处理过了
+								//为什么要把商品的基础信息和那个图片的api分开  路径不一样，获取回来的数据也不一样，后台处理过了
 								//cartData.id = res.data.shoppingCartData[0].id
 								//cartData.maxNum = res.data.shoppingCartData[0].maxNum
 								//console.log(cartData)

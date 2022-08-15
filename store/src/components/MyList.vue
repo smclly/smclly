@@ -2,20 +2,17 @@
 	<div id="myList" class="myList">
 		<ul>
 			<li v-for="item in list" :key="item.product_id">
-				<!-- 父容器绑定一个data的数据，两个按钮控制该容器的显示与隐藏  容器外面的按钮属性 控制 slot="reference"  -->
+				<!-- 父容器绑定一个data的数据，两个按钮控制该容器的显示与隐藏 容器外面的按钮属性 控制 slot="reference"  -->
 
 				<el-popover placement="top" >
 					<p>确定删除吗？</p>
 					<div style="text-align: right; margin: 10px 0 0">
-						<!-- 添加一个按钮，要取消， 还是几个点，一个是点击弹出对话框，然后是将data中的数据变成ture，然后给一个取消的按钮，将其设置为false -->
+						<!-- 添加一个按钮，点击弹出对话框，将data中的数据变成ture，取消按钮，将其设置为false -->
 						<el-button type="primary" size="mini" @click="deleteCollect(item.product_id)">确定</el-button>					
 					</div>
-					<!-- slot="reference" 点击就弹出对话框，按钮提示框吧这个样子   reference	触发 Popover 显示的 HTML 元素-->
+					<!-- slot="reference" 点击就弹出对话框，按钮提示框吧这个样子 触发 Popover -->
 					<i class="el-icon-close delete" slot="reference" v-show="isDelete"></i>
 					<!-- @click="vis = true"-->
-					
-					<!-- 得，这个ui不是很好玩，有时候可以用，是在修改后可以用，但是重新登录或打开就不能用了 
-					这个组件有意思，查问题的话，估计是组件的版本问题吧，或者是其他的问题， 一个html元素控制 el-popover 然后实现响应的交互-->
 				</el-popover>
 
 				<!-- 路由跳转，跳转到商品细节的组件去  根据query传参 -->
@@ -31,7 +28,6 @@
 					</p>
 				</router-link>
 			</li>
-			<!--这个组件的用，如果有，并且父组件传参长度大于1  大于1太敷衍了，多少得大于7，这样样式才算完整 -->
 			<li v-show="isMore && list.length>=6" id="more">
 				<!--声明式导航，动态绑定产品分类 的id，根据id跳转	 -->
 				<router-link :to="{ path: '/goods', query: {categoryID:categoryID} }">
